@@ -1,5 +1,6 @@
-/*using BankingSystem.Application.Commands;
+using BankingSystem.Application.Commands;
 using BankingSystem.Application.Queries;
+using MediatR;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace University_Management_System.Common.Configurations;
@@ -13,4 +14,4 @@ public static class MediatRConfiguration
 
         return services;
     }
-}*/
+}

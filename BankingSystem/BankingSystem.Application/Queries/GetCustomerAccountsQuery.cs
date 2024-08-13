@@ -1,6 +1,8 @@
 using BankingSystem.Application.Common;
 using BankingSystem.Domain.Models;
-using BankingSystem.Domain.Models.Dtos;
+using BankingSystem.Persistance.Data;
+using BankingSystem.Persistance.Models;
+using BankingSystem.Persistance.Models.Dtos;
 using MediatR;
 using University_Management_System.Common.Exceptions;
 
@@ -17,10 +19,12 @@ public class GetCustomerAccountsQuery : IRequest<IReadOnlyList<AccountDto>>
 public class GetCustomerAccountsQueryHandler : IRequestHandler<GetCustomerAccountsQuery, IReadOnlyList<AccountDto>>
 {
     private readonly Utils<Customer>_customerRepository;
+    private readonly BankingSystemContext _context;
 
-    public GetCustomerAccountsQueryHandler(Utils<Customer> customerRepository)
+    public GetCustomerAccountsQueryHandler(Utils<Customer> customerRepository, BankingSystemContext context)
     {
         _customerRepository = customerRepository;
+        _context = context;
     }
 
     public async Task<IReadOnlyList<AccountDto>> Handle(GetCustomerAccountsQuery request, CancellationToken cancellationToken)
@@ -34,9 +38,9 @@ public class GetCustomerAccountsQueryHandler : IRequestHandler<GetCustomerAccoun
         var accounts = customer.Accounts.Select(a => new AccountDto
         {
             AccountId = a.Id,
-            AccountNumber = a.AccountNumber
+            AccountNumber = a.Accountnumber
         }).ToList();
-
+        
         return accounts;
     }
 }

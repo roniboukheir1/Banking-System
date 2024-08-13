@@ -1,5 +1,6 @@
+/*
 using BankingSystem.Application.Queries;
-using BankingSystem.Domain.Models;
+using BankingSystem.Domain.Models1;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
@@ -24,3 +25,4 @@ public class CustomerController : ControllerBase
     }
 
 }
+*/

@@ -1,7 +1,7 @@
-namespace BankingSystem.Domain.Models.Dtos;
+namespace BankingSystem.Persistance.Models.Dtos;
 
 public class AccountDto
 {
-    public string AccountNumber;
-    public int AccountId;
+    public int AccountId { get; set; }
+    public string AccountNumber { get; set; }
 }
