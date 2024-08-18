@@ -14,5 +14,9 @@ public class Account
     public virtual Customer Customer { get; set; } = null!;
 
     public virtual ICollection<Transaction> Transactions { get; set; } = new List<Transaction>();
-    
+
+    public void ApplyTransaction(Transaction transaction)
+    {
+       Balance += transaction.Type == "Deposit" ? transaction.Amount : -transaction.Amount;
+    }
 }

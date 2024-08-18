@@ -23,15 +23,12 @@ public class TransactionsController : ControllerBase
         return Ok("Transaction message sent");
     }
 
-    [HttpGet("transactions")]
+    [HttpGet()]
     public async Task<IActionResult> GetCustomerTransactions([FromQuery] int accountId)
     {
-        var query = new GetCustomerTransactions
-        {
-            AccountId = accountId
-        };
-        var transactions = _mediator.Send(query);
-        return Ok(transactions);
+        var query = new GetCustomerTransactions(accountId);
+        var transactions = await _mediator.Send(query);
+        return Ok(transactions.ToList());
     }
 }
 

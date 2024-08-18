@@ -55,7 +55,7 @@ namespace TransactionService.Services
             };
 
             var account = await _context.Accounts.FindAsync(accountId);
-            account.Balance += amount;
+            account.ApplyTransaction(transaction);
             _context.Update(account);
             await _context.AddAsync(transaction);
             await _context.SaveChangesAsync();

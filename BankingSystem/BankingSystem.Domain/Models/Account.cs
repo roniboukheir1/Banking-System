@@ -18,4 +18,23 @@ public class Account
     public virtual Customer Customer { get; set; } = null!;
 
     public virtual ICollection<Transaction> Transactions { get; set; } = new List<Transaction>();
+    
+    private readonly List<Event> _changes = new List<Event>();
+    
+   public void Apply(TransactionCreatedEvent @event)
+   {
+      Balance += @event.Type == "Deposit" ? @event.Amount : -@event.Amount;
+      _changes.Add(@event);
+   }
+
+   public void Apply(TransactionRevertedEvent @event)
+   {
+      Balance -= @event.Type == "Deposit" ? @event.Amount : -@event.Amount;
+      _changes.Add(@event);
+   }
+
+   public IEnumerable<Event> GetUncommittedChanges()
+   {
+      return _changes;
+   } 
 }

@@ -1,6 +1,4 @@
-using BankingSystem.Application.Commands;
 using BankingSystem.Application.Queries;
-using BankingSystem.Domain.Models;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
@@ -18,16 +16,34 @@ public class CustomerController : ControllerBase
     }
 
     [HttpGet("{id}")]
-    public async Task<IActionResult>GetById(int id)
+    public async Task<IActionResult> GetById(int id)
     {
+        if (id <= 0)
+        {
+            return BadRequest("Invalid customer ID.");
+        }
+
         var query = new GetCustomerAccountsQuery(id);
-        return Ok(await _mediator.Send(query));
+        var result = await _mediator.Send(query);
+
+        if (result == null || !result.Any())
+        {
+            return NotFound($"No accounts found for customer ID {id}.");
+        }
+
+        return Ok(result);
     }
 
     [HttpPost]
     public async Task<IActionResult> AddCustomer([FromBody] CreateCustomerCommand command)
     {
+        if (command.Customer == null)
+        {
+            return BadRequest("Customer data is required.");
+        }
+
         await _mediator.Send(command);
-        return Ok("Customer Created");
+
+        return CreatedAtAction(nameof(GetById), new { id = command.Customer.Id }, command.Customer);
     }
 }

@@ -1,55 +1,77 @@
+using BankingSystem.Application.Commands;
+using BankingSystem.Application.Queries;
 using BankingSystem.Domain.Models;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.OData.Routing.Controllers;
 using MediatR;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.OData.Formatter;
+using Microsoft.AspNetCore.OData.Routing.Controllers;
 using Microsoft.AspNetCore.OData.Query;
 
-namespace BankingSystem.API.Controllers;
-
-public class AdminController : ODataController
+namespace BankingSystem.API.Controllers
 {
-    private readonly IMediator _mediator;
-
-    public AdminController(IMediator mediator)
+    [ApiController]
+    [Route("api/[controller]")]
+    public class AdminController : ODataController
     {
-        _mediator = mediator;
-    }
+        private readonly IMediator _mediator;
 
-    [EnableQuery]
-    public async Task<IActionResult> Get()
-    {
-        var customers = await _mediator.Send(new GetAllCustomersQuery());
-        return Ok(customers);
-    }
+        public AdminController(IMediator mediator)
+        {
+            _mediator = mediator;
+        }
 
-    [EnableQuery]
-    public async Task<IActionResult> Get([FromODataUri] int key)
-    {
-        var customer = await _mediator.Send(new GetCustomerByIdQuery(key));
-        if (customer == null)
-            return NotFound();
-        return Ok(customer);
-    }
+        [EnableQuery]
+        [HttpGet("customers")] // GET api/admin/customers
+        public async Task<IActionResult> GetAllCustomers()
+        {
+            var customers = await _mediator.Send(new GetAllCustomersQuery());
+            return Ok(customers);
+        }
 
-    public async Task<IActionResult> Post([FromBody] Customer customer)
-    {
-        await _mediator.Send(new CreateCustomerCommand(customer));
-        return Created(customer);
-    }
+        [EnableQuery]
+        [HttpGet("customers/{key}")] // GET api/admin/customers/{key}
+        public async Task<IActionResult> GetCustomerById([FromODataUri] int key)
+        {
+            var customer = await _mediator.Send(new GetCustomerByIdQuery(key));
+            if (customer == null)
+                return NotFound();
+            return Ok(customer);
+        }
 
-    public async Task<IActionResult> Put([FromODataUri] int key, [FromBody] Customer update)
-    {
-        if (key != update.Id)
-            return BadRequest();
+        [HttpPost("customers")] // POST api/admin/customers
+        public async Task<IActionResult> CreateCustomer([FromBody] Customer customer)
+        {
+            await _mediator.Send(new CreateCustomerCommand(customer));
+            return CreatedAtAction(nameof(GetCustomerById), new { key = customer.Id }, customer);
+        }
 
-        await _mediator.Send(new UpdateCustomerCommand(update));
-        return Updated(update);
-    }
+        [HttpPut("customers/{key}")] // PUT api/admin/customers/{key}
+        public async Task<IActionResult> UpdateCustomer([FromODataUri] int key, [FromBody] Customer update)
+        {
+            if (key != update.Id)
+                return BadRequest();
 
-    public async Task<IActionResult> Delete([FromODataUri] int key)
-    {
-        await _mediator.Send(new DeleteCustomerCommand(key));
-        return NoContent();
+            await _mediator.Send(new UpdateCustomerCommand(update));
+            return Updated(update);
+        }
+
+        [HttpDelete("customers/{key}")] // DELETE api/admin/customers/{key}
+        public async Task<IActionResult> DeleteCustomer([FromODataUri] int key)
+        {
+            await _mediator.Send(new DeleteCustomerCommand(key));
+            return NoContent();
+        }
+        
+        [HttpPost("rollback-transactions")] // POST api/admin/rollback-transactions
+        public async Task<IActionResult> RollbackTransactions([FromBody] RollbackTransactionsCommand rollbackCommand)
+        {
+            if (rollbackCommand == null || rollbackCommand.Date == default)
+            {
+                return BadRequest("Invalid rollback request.");
+            }
+
+            await _mediator.Send(rollbackCommand);
+            return Ok("Transactions rolled back successfully.");
+        }
     }
 }
