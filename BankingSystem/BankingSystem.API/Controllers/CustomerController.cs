@@ -1,6 +1,6 @@
-/*
+using BankingSystem.Application.Commands;
 using BankingSystem.Application.Queries;
-using BankingSystem.Domain.Models1;
+using BankingSystem.Domain.Models;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
@@ -17,12 +17,17 @@ public class CustomerController : ControllerBase
         _mediator = mediator;
     }
 
-    [HttpGet("api/{id}")]
+    [HttpGet("{id}")]
     public async Task<IActionResult>GetById(int id)
     {
         var query = new GetCustomerAccountsQuery(id);
         return Ok(await _mediator.Send(query));
     }
 
+    [HttpPost]
+    public async Task<IActionResult> AddCustomer([FromBody] CreateCustomerCommand command)
+    {
+        await _mediator.Send(command);
+        return Ok("Customer Created");
+    }
 }
-*/

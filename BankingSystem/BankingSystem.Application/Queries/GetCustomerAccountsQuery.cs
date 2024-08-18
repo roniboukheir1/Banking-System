@@ -19,12 +19,10 @@ public class GetCustomerAccountsQuery : IRequest<IReadOnlyList<AccountDto>>
 public class GetCustomerAccountsQueryHandler : IRequestHandler<GetCustomerAccountsQuery, IReadOnlyList<AccountDto>>
 {
     private readonly Utils<Customer>_customerRepository;
-    private readonly BankingSystemContext _context;
 
-    public GetCustomerAccountsQueryHandler(Utils<Customer> customerRepository, BankingSystemContext context)
+    public GetCustomerAccountsQueryHandler(Utils<Customer> customerRepository)
     {
         _customerRepository = customerRepository;
-        _context = context;
     }
 
     public async Task<IReadOnlyList<AccountDto>> Handle(GetCustomerAccountsQuery request, CancellationToken cancellationToken)

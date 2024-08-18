@@ -7,13 +7,13 @@ using TransactionService.Models;
 
 namespace TransactionService.Services;
 
-public class TransactionMessageConsumer : BackgroundService
+public class TransactionCreationConsumer : BackgroundService
 {
     private readonly IServiceProvider _serviceProvider;
     private IConnection _connection;
     private IModel _channel;
 
-    public TransactionMessageConsumer(IServiceProvider serviceProvider)
+    public TransactionCreationConsumer(IServiceProvider serviceProvider)
     {
         _serviceProvider = serviceProvider;
         InitializeRabbitMQ();
@@ -51,6 +51,7 @@ public class TransactionMessageConsumer : BackgroundService
         _channel.BasicConsume(queue: "transactionQueue", autoAck: true, consumer: consumer);
         return Task.CompletedTask;
     }
+    
 
     public override void Dispose()
     {

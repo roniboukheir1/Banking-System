@@ -1,6 +1,7 @@
 using BankingSystem.Application.Commands;
 using BankingSystem.Application.Queries;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace BankingSystem.API.Controllers;

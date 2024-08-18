@@ -1,26 +1,39 @@
-using BankingSystem.Infrastructure.Services;
+
+using BankingSystem.Application.Queries;
+using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
-namespace BankingSystem.API.Controllers;
+[ApiController]
+[Route("api/[controller]")]
+public class TransactionsController : ControllerBase
+{
+    private readonly TransactionMessagePublisher _messagePublisher;
+    private readonly IMediator _mediator;
 
-  [ApiController]
-    [Route("api/[controller]")]
-    public class TransactionsController : ControllerBase
+    public TransactionsController(TransactionMessagePublisher messagePublisher, IMediator mediator)
     {
-        private readonly TransactionMessagePublisher _messagePublisher;
-
-        public TransactionsController(TransactionMessagePublisher messagePublisher)
-        {
-            _messagePublisher = messagePublisher;
-        }
-
-        [HttpPost]
-        public IActionResult CreateTransaction([FromBody] CreateTransactionRequest request)
-        {
-            _messagePublisher.PublishTransaction(request.AccountId, request.Amount, request.Type);
-            return Ok("Transaction message sent");
-        }
+        _mediator = mediator;
+        _messagePublisher = messagePublisher;
     }
+
+    [HttpPost]
+    public IActionResult CreateTransaction([FromBody] CreateTransactionRequest request)
+    {
+        _messagePublisher.PublishTransaction(request.AccountId, request.Amount, request.Type);
+        return Ok("Transaction message sent");
+    }
+
+    [HttpGet("transactions")]
+    public async Task<IActionResult> GetCustomerTransactions([FromQuery] int accountId)
+    {
+        var query = new GetCustomerTransactions
+        {
+            AccountId = accountId
+        };
+        var transactions = _mediator.Send(query);
+        return Ok(transactions);
+    }
+}
 
     public class CreateTransactionRequest
     {

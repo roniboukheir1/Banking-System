@@ -6,9 +6,9 @@ namespace TransactionService.Services
 {
     public interface ITransactionService
     {
-        Task<IEnumerable<Transaction>> GetAllTransactionsAsync();
+        /*Task<IEnumerable<Transaction>> GetAllTransactionsAsync();
         Task<Transaction> GetTransactionByIdAsync(int id);
-        Task<IEnumerable<Transaction>> GetTransactionsByAccountIdAsync(int accountId);
+        Task<IEnumerable<Transaction>> GetTransactionsByAccountIdAsync(int accountId);*/
         Task<int> CreateTransactionAsync(int accountId, decimal amount, string type);
     }
 
@@ -23,6 +23,7 @@ namespace TransactionService.Services
             _context = context;
         }
 
+        /*
         public async Task<IEnumerable<Transaction>> GetAllTransactionsAsync()
         {
             return await _repository.GetAllTransactionsAsync();
@@ -37,6 +38,7 @@ namespace TransactionService.Services
         {
             return await _repository.GetTransactionsByAccountIdAsync(accountId);
         }
+        */
 
         public async Task<int> CreateTransactionAsync(int accountId, decimal amount, string type)
         {
