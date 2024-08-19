@@ -31,7 +31,6 @@ namespace BankingSystem.Application.Commands
             var events = await _eventStore.GetEventsAsync(request.Date.Date, request.Date.Date.AddDays(1));
             
             events = events.Where(e => e is TransactionCreatedEvent createdEvent && createdEvent.AccountId == request.AccountId);
-           
 
             foreach (var @event in events)
             {
@@ -44,7 +43,7 @@ namespace BankingSystem.Application.Commands
                         AccountId = createdEvent.AccountId,
                         Amount = createdEvent.Amount,
                         Type = createdEvent.Type,
-                        CreatedAt = DateTime.UtcNow // Ensure that we have a timestamp for the revert event
+                        CreatedAt = DateTime.UtcNow
                     };
 
                     await _eventStore.SaveEventAsync(revertEvent);

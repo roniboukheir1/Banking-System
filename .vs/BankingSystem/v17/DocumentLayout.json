@@ -1,0 +1,85 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\abukh\\RiderProjects\\BankingSystem\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\abukh\\RiderProjects\\BankingSystem\\BankingSystem\\BankingSystem.Infrastructure\\Configuration\\SerilogConfiguration.cs||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:BankingSystem\\BankingSystem.Infrastructure\\Configuration\\SerilogConfiguration.cs||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\abukh\\RiderProjects\\BankingSystem\\BankingSystem\\BankingSystem.API\\Program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:BankingSystem\\BankingSystem.API\\Program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\abukh\\RiderProjects\\BankingSystem\\BankingSystem\\BankingSystem.API\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:BankingSystem\\BankingSystem.API\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\abukh\\RiderProjects\\BankingSystem\\BankingSystem\\BankingSystem.Infrastructure\\Configuration\\AuthenticationConfiguration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:BankingSystem\\BankingSystem.Infrastructure\\Configuration\\AuthenticationConfiguration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 326,
+          "SelectedChildIndex": 2,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "C:\\Users\\abukh\\RiderProjects\\BankingSystem\\BankingSystem\\BankingSystem.API\\appsettings.json",
+              "RelativeDocumentMoniker": "BankingSystem\\BankingSystem.API\\appsettings.json",
+              "ToolTip": "C:\\Users\\abukh\\RiderProjects\\BankingSystem\\BankingSystem\\BankingSystem.API\\appsettings.json",
+              "RelativeToolTip": "BankingSystem\\BankingSystem.API\\appsettings.json",
+              "ViewState": "AQIAAAkAAAAAAAAAAAAowCUAAAADAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2024-08-18T10:49:46.187Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "AuthenticationConfiguration.cs",
+              "DocumentMoniker": "C:\\Users\\abukh\\RiderProjects\\BankingSystem\\BankingSystem\\BankingSystem.Infrastructure\\Configuration\\AuthenticationConfiguration.cs",
+              "RelativeDocumentMoniker": "BankingSystem\\BankingSystem.Infrastructure\\Configuration\\AuthenticationConfiguration.cs",
+              "ToolTip": "C:\\Users\\abukh\\RiderProjects\\BankingSystem\\BankingSystem\\BankingSystem.Infrastructure\\Configuration\\AuthenticationConfiguration.cs",
+              "RelativeToolTip": "BankingSystem\\BankingSystem.Infrastructure\\Configuration\\AuthenticationConfiguration.cs",
+              "ViewState": "AQIAAB4AAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-18T10:45:03.83Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "SerilogConfiguration.cs",
+              "DocumentMoniker": "C:\\Users\\abukh\\RiderProjects\\BankingSystem\\BankingSystem\\BankingSystem.Infrastructure\\Configuration\\SerilogConfiguration.cs",
+              "RelativeDocumentMoniker": "BankingSystem\\BankingSystem.Infrastructure\\Configuration\\SerilogConfiguration.cs",
+              "ToolTip": "C:\\Users\\abukh\\RiderProjects\\BankingSystem\\BankingSystem\\BankingSystem.Infrastructure\\Configuration\\SerilogConfiguration.cs",
+              "RelativeToolTip": "BankingSystem\\BankingSystem.Infrastructure\\Configuration\\SerilogConfiguration.cs",
+              "ViewState": "AQIAAAgAAAAAAAAAAAAowBsAAAAEAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-18T10:44:43.255Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\abukh\\RiderProjects\\BankingSystem\\BankingSystem\\BankingSystem.API\\Program.cs",
+              "RelativeDocumentMoniker": "BankingSystem\\BankingSystem.API\\Program.cs",
+              "ToolTip": "C:\\Users\\abukh\\RiderProjects\\BankingSystem\\BankingSystem\\BankingSystem.API\\Program.cs",
+              "RelativeToolTip": "BankingSystem\\BankingSystem.API\\Program.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA4AAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-18T10:37:26.302Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+C:\Users\abukh\RiderProjects\BankingSystem\BankingSystem\BankingSystem.Domain\bin\Debug\net8.0\BankingSystem.Domain.deps.json
+C:\Users\abukh\RiderProjects\BankingSystem\BankingSystem\BankingSystem.Domain\bin\Debug\net8.0\BankingSystem.Domain.dll
+C:\Users\abukh\RiderProjects\BankingSystem\BankingSystem\BankingSystem.Domain\bin\Debug\net8.0\BankingSystem.Domain.pdb
+C:\Users\abukh\RiderProjects\BankingSystem\BankingSystem\BankingSystem.Domain\obj\Debug\net8.0\BankingSystem.Domain.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\abukh\RiderProjects\BankingSystem\BankingSystem\BankingSystem.Domain\obj\Debug\net8.0\BankingSystem.Domain.AssemblyInfoInputs.cache
+C:\Users\abukh\RiderProjects\BankingSystem\BankingSystem\BankingSystem.Domain\obj\Debug\net8.0\BankingSystem.Domain.AssemblyInfo.cs
+C:\Users\abukh\RiderProjects\BankingSystem\BankingSystem\BankingSystem.Domain\obj\Debug\net8.0\BankingSystem.Domain.csproj.CoreCompileInputs.cache
+C:\Users\abukh\RiderProjects\BankingSystem\BankingSystem\BankingSystem.Domain\obj\Debug\net8.0\BankingSystem.Domain.dll
+C:\Users\abukh\RiderProjects\BankingSystem\BankingSystem\BankingSystem.Domain\obj\Debug\net8.0\refint\BankingSystem.Domain.dll
+C:\Users\abukh\RiderProjects\BankingSystem\BankingSystem\BankingSystem.Domain\obj\Debug\net8.0\BankingSystem.Domain.pdb
+C:\Users\abukh\RiderProjects\BankingSystem\BankingSystem\BankingSystem.Domain\obj\Debug\net8.0\ref\BankingSystem.Domain.dll
+C:\Users\abukh\RiderProjects\BankingSystem\BankingSystem\BankingSystem.Domain\obj\Debug\net8.0\BankingSystem.Domain.csproj.AssemblyReference.cache
+C:\Users\abukh\RiderProjects\BankingSystem\BankingSystem\BankingSystem.Domain\obj\Debug\net8.0\BankingSystem.Domain.sourcelink.json

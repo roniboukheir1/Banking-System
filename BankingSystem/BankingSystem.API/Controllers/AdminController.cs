@@ -2,10 +2,12 @@ using BankingSystem.Application.Commands;
 using BankingSystem.Application.Queries;
 using BankingSystem.Domain.Models;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.OData.Formatter;
 using Microsoft.AspNetCore.OData.Routing.Controllers;
 using Microsoft.AspNetCore.OData.Query;
+
 
 namespace BankingSystem.API.Controllers
 {
@@ -21,7 +23,7 @@ namespace BankingSystem.API.Controllers
         }
 
         [EnableQuery]
-        [HttpGet("customers")] // GET api/admin/customers
+        [HttpGet("customers")] 
         public async Task<IActionResult> GetAllCustomers()
         {
             var customers = await _mediator.Send(new GetAllCustomersQuery());
@@ -29,7 +31,7 @@ namespace BankingSystem.API.Controllers
         }
 
         [EnableQuery]
-        [HttpGet("customers/{key}")] // GET api/admin/customers/{key}
+        [HttpGet("customersById")]
         public async Task<IActionResult> GetCustomerById([FromODataUri] int key)
         {
             var customer = await _mediator.Send(new GetCustomerByIdQuery(key));
@@ -45,7 +47,7 @@ namespace BankingSystem.API.Controllers
             return CreatedAtAction(nameof(GetCustomerById), new { key = customer.Id }, customer);
         }
 
-        [HttpPut("customers/{key}")] // PUT api/admin/customers/{key}
+        [HttpPut("customers")] // PUT api/admin/customers/{key}
         public async Task<IActionResult> UpdateCustomer([FromODataUri] int key, [FromBody] Customer update)
         {
             if (key != update.Id)
@@ -55,14 +57,14 @@ namespace BankingSystem.API.Controllers
             return Updated(update);
         }
 
-        [HttpDelete("customers/{key}")] // DELETE api/admin/customers/{key}
+        [HttpDelete("customers")] 
         public async Task<IActionResult> DeleteCustomer([FromODataUri] int key)
         {
             await _mediator.Send(new DeleteCustomerCommand(key));
             return NoContent();
         }
         
-        [HttpPost("rollback-transactions")] // POST api/admin/rollback-transactions
+        [HttpPost("rollback-transactions")]
         public async Task<IActionResult> RollbackTransactions([FromBody] RollbackTransactionsCommand rollbackCommand)
         {
             if (rollbackCommand == null || rollbackCommand.Date == default)

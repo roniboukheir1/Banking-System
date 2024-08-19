@@ -1,0 +1,23 @@
+{
+  "Version": 1,
+  "Hash": "g9zv4mcjZGio+eafOdwycjsw1+7JvwQOAQWdpZ3Rurw=",
+  "Source": "BankingSystem.API",
+  "BasePath": "_content/BankingSystem.API",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [
+    {
+      "Identity": "C:\\Users\\abukh\\RiderProjects\\BankingSystem\\BankingSystem\\TransactionService\\TransactionService.csproj",
+      "Version": 2,
+      "Source": "TransactionService",
+      "GetPublishAssetsTargets": "ComputeReferencedStaticWebAssetsPublishManifest;GetCurrentProjectPublishStaticWebAssetItems",
+      "AdditionalPublishProperties": "Configuration=Debug;Platform=AnyCPU",
+      "AdditionalPublishPropertiesToRemove": "WebPublishProfileFile;TargetFramework",
+      "GetBuildAssetsTargets": "GetCurrentProjectBuildStaticWebAssetItems",
+      "AdditionalBuildProperties": "Configuration=Debug;Platform=AnyCPU",
+      "AdditionalBuildPropertiesToRemove": "WebPublishProfileFile;TargetFramework"
+    }
+  ],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}

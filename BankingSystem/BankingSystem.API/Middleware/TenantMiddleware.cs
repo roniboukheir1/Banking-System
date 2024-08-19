@@ -1,5 +1,4 @@
 
-/*
 using BankingSystem.API.Services;
 using BankingSystem.Persistance.Data;
 using Microsoft.EntityFrameworkCore;
@@ -21,26 +20,29 @@ public class TenantMiddleware
 
         if (string.IsNullOrEmpty(encryptedTenantKey))
         {
-            context.Response.StatusCode = StatusCodes.Status400BadRequest;
-            await context.Response.WriteAsync("Tenant key is missing.");
-            return;
+            //context.Response.StatusCode = StatusCodes.Status400BadRequest;
+            //await context.Response.WriteAsync("Tenant key is missing.");
+            context.Items["TenantConnectionString"] =
+                "Server=localhost;Database=bankingsystemdb;Useraname=postgres;Password=mysequel1!;Search Path=branch1;";
         }
 
-        var decryptedTenantKey = EncryptionHelper.Decrypt(Convert.FromBase64String(encryptedTenantKey));
-
-        var tenant = await tenantDbContext.Tenants
-            .FirstOrDefaultAsync(t => t.EncryptedTenantKey == EncryptionHelper.Encrypt(decryptedTenantKey));
-
-        if (tenant == null)
+        else
         {
-            context.Response.StatusCode = StatusCodes.Status404NotFound;
-            await context.Response.WriteAsync("Tenant not found.");
-            return;
-        }
+            var decryptedTenantKey = EncryptionHelper.Decrypt(Convert.FromBase64String(encryptedTenantKey));
 
-        context.Items["TenantConnectionString"] = tenant.ConnectionString;
+            var tenant = await tenantDbContext.Tenants
+                .FirstOrDefaultAsync(t => t.EncryptedTenantKey == EncryptionHelper.Encrypt(decryptedTenantKey));
+
+            if (tenant == null)
+            {
+                context.Response.StatusCode = StatusCodes.Status404NotFound;
+                await context.Response.WriteAsync("Tenant not found.");
+                return;
+            }
+
+            context.Items["TenantConnectionString"] = tenant.ConnectionString;
+        }
 
         await _next(context);
     }
 }
-*/

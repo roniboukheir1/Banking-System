@@ -1,0 +1,26 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net8.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <PackageReference Include="EntityFramework" Version="6.5.1" />
+      <PackageReference Include="MediatR" Version="12.4.0" />
+      <PackageReference Include="MediatR.Extensions.Microsoft.DependencyInjection" Version="11.1.0" />
+      <PackageReference Include="Microsoft.EntityFrameworkCore" Version="8.0.7" />
+      <PackageReference Include="Microsoft.EntityFrameworkCore.Relational" Version="8.0.7" />
+      <PackageReference Include="Microsoft.EntityFrameworkCore.Relational.Design" Version="1.1.6" />
+      <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="8.0.4" />
+      <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL.Design" Version="1.1.0" />
+    </ItemGroup>
+    <ItemGroup>
+      <ProjectReference Include="..\BankingSystem.Common\BankingSystem.Common.csproj" />
+      <ProjectReference Include="..\BankingSystem.Domain\BankingSystem.Domain.csproj" />
+      <ProjectReference Include="..\BankingSystem.Persistance\BankingSystem.Persistance.csproj" />
+      <ProjectReference Include="..\TransactionService\TransactionService.csproj" />
+    </ItemGroup>
+
+</Project>
