@@ -1,0 +1,56 @@
+version: '3.8'
+
+services:
+  app:
+    image: your_api_image_name:latest # Replace with your actual API Docker image
+    container_name: banking_api
+    ports:
+      - "8000:8000" # Expose API on port 8000
+    environment:
+      - DATABASE_URL=postgresql://postgres:mysequel1!@db:5432/bankingsystemdb
+      - RABBITMQ_URL=amqp://rabbitmq:5672
+      - KEYCLOAK_AUTHORITY=http://keycloak:8080/auth
+      - KEYCLOAK_REALM=BankingSystem
+      - KEYCLOAK_CLIENT_ID=banking-system-api
+      - SMTP_SERVER=mail.smtp2go.com
+      - SMTP_PORT=2525
+      - SMTP_USERNAME=Roni
+      - SMTP_PASSWORD=B019771AA229464981195D71B1CBA057
+      - SMTP_FROM=roni.boukheir@lau.edu
+    depends_on:
+      - db
+      - rabbitmq
+      - keycloak
+
+  db:
+    image: postgres:latest
+    container_name: postgres_db
+    environment:
+      POSTGRES_USER: postgres 
+      POSTGRES_PASSWORD: mysequel1! 
+      POSTGRES_DB: bankingsystemdb 
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+  rabbitmq:
+    image: rabbitmq:3-management
+    container_name: rabbitmq_server
+    ports:
+      - "5672:5672"  # Default RabbitMQ port
+      - "15672:15672"  # Management console
+
+  keycloak:
+    image: quay.io/keycloak/keycloak:latest
+    container_name: keycloak_server
+    environment:
+      - KEYCLOAK_ADMIN=admin
+      - KEYCLOAK_ADMIN_PASSWORD=admin
+    command: start-dev
+    ports:
+      - "8080:8080"
+    volumes:
+      - keycloak_data:/opt/keycloak/data
+
+volumes:
+  postgres_data:
+  keycloak_data:
